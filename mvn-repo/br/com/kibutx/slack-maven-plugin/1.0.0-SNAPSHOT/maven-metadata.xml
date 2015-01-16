@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>br.com.kibutx</groupId>
+  <artifactId>slack-maven-plugin</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20150116.202701</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <lastUpdated>20150116202701</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>1.0.0-20150116.202701-1</value>
+        <updated>20150116202701</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.0.0-20150116.202701-1</value>
+        <updated>20150116202701</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>
