@@ -32,6 +32,7 @@ public class SlackMessageMojo extends AbstractMojo {
 
 	/**
 	 * An optional channel that overrides default channel for this web hook integration
+	 * <br/> can also user '@username' to send to a specific user
 	 */
 	@Parameter(required = false)
 	private String channel;
@@ -58,6 +59,7 @@ public class SlackMessageMojo extends AbstractMojo {
 		msg.setFallback(message);
 		msg.setPretext(message);
 		msg.setColor(color);
+		msg.setChannel(channel);
 		if(fields != null && !fields.isEmpty()){
 			msg.setFields(fields);
 		}
