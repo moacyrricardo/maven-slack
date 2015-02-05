@@ -96,6 +96,13 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<extensions>
+			<extension>
+				<groupId>org.springframework.build</groupId>
+				<artifactId>aws-maven</artifactId>
+				<version>5.0.0.RELEASE</version>
+			</extension>
+		</extensions>
 	</build>
 	<distributionManagement>
 		<repository>
@@ -103,5 +110,15 @@
 			<name>Internal Repository</name>
 			<url>${internal.repo.path}</url>
 		</repository>
+		<repository>
+			<id>s3-moarepo</id>
+			<name>S3 MoaRepo</name>
+			<url>s3://moarepo/release</url>
+		</repository>
+		<snapshotRepository>
+			<id>s3-moarepo-snapshot</id>
+			<name>S3 MoaRepo</name>
+			<url>s3://moarepo/snapshot</url>
+		</snapshotRepository>
 	</distributionManagement>
 </project>
