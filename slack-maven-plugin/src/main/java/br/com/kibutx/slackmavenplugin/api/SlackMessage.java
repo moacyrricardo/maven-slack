@@ -21,6 +21,9 @@ public class SlackMessage implements Serializable {
 	@JsonInclude(Include.NON_EMPTY)
 	private List<Field> fields = new ArrayList<Field>();
 
+	@JsonInclude(Include.NON_EMPTY)
+	private List<Attachment> attachments = new ArrayList<Attachment>();
+	
 	public String getFallback() {
 		return fallback;
 	}
@@ -68,4 +71,12 @@ public class SlackMessage implements Serializable {
 	public void setFields(List<Field> fields) {
 		this.fields = fields;
 	}
+	
+	public List<Attachment> getAttachments() {
+		return attachments;
+	}
+
+	public void setAttachments(List<Attachment> attachments) {
+		this.attachments = attachments;
+	}	
 }
