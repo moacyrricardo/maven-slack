@@ -37,6 +37,11 @@ public class SlackMessageMojo extends AbstractMojo {
 	@Parameter(required = false)
 	private String channel;
 	/**
+	 * The username of message
+	 */
+	@Parameter(required = false)
+	private String username;
+	/**
 	 * The message
 	 */
 	@Parameter(required = true)
@@ -56,6 +61,7 @@ public class SlackMessageMojo extends AbstractMojo {
 		getLog().info("Starting SlackMessage to '"+apiHash+"'");
 		getLog().debug("\t with message '"+message+"'");
 		SlackMessage msg = new SlackMessage();
+		msg.setUsername(username);
 		msg.setFallback(message);
 		msg.setPretext(message);
 		msg.setColor(color);

@@ -12,6 +12,7 @@ public class SlackMessage implements Serializable {
 	private static final long serialVersionUID = -2568313563058072257L;
 
 	private String fallback;
+	private String username;
 	private String color;
 	private String pretext;
 
@@ -26,6 +27,14 @@ public class SlackMessage implements Serializable {
 
 	public void setFallback(String fallback) {
 		this.fallback = fallback;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getColor() {
