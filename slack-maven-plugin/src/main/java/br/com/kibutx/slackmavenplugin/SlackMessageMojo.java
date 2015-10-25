@@ -13,12 +13,14 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import br.com.kibutx.slackmavenplugin.api.Field;
+import br.com.kibutx.slackmavenplugin.api.Attachment;
 import br.com.kibutx.slackmavenplugin.api.SlackApiFactory;
 import br.com.kibutx.slackmavenplugin.api.SlackMessage;
 
 /**
  * Sends a message to a slack channel
  * @author <a href="mailto:mpereira@quintoandar.com.br">moa</a>
+ * @param <Attachement>
  *
  */
 @Mojo(name = "slackmessage")
@@ -61,6 +63,13 @@ public class SlackMessageMojo extends AbstractMojo {
 	@Parameter(required = false)
 	private List<Field> fields = new ArrayList<Field>();
 
+	/**
+	 * An optional list of attachments to be sent, such as a link
+	 * to the artifact you've just built.
+	 */
+	@Parameter(required = false)
+	private List<Attachment> attachments = new ArrayList<Attachment>();	
+	
 	public void execute() throws MojoExecutionException {
 		getLog().info("Starting SlackMessage to '"+apiHash+"'");
 		getLog().debug("\t with message '"+message+"'");
@@ -72,6 +81,9 @@ public class SlackMessageMojo extends AbstractMojo {
 		msg.setChannel(channel);
 		if(fields != null && !fields.isEmpty()){
 			msg.setFields(fields);
+		}
+		if(attachments != null && !attachments.isEmpty()){
+			msg.setAttachments(attachments);
 		}
 		
 		try {
