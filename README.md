@@ -65,6 +65,7 @@ channel: maybe a direct contact or a channel override (since webhooks are bound 
 			</goals>
 			<configuration>
 				<apiHash>hash1/hash2/hash3</apiHash>
+        <username>Maven</username>
 				<channel>@devmate</channel>
 				<message>Short message</message>
 				<fields>

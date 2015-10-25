@@ -1,5 +1,6 @@
 package br.com.kibutx.slackmavenplugin;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,9 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import br.com.kibutx.slackmavenplugin.api.Field;
 import br.com.kibutx.slackmavenplugin.api.SlackApiFactory;
@@ -37,6 +41,11 @@ public class SlackMessageMojo extends AbstractMojo {
 	@Parameter(required = false)
 	private String channel;
 	/**
+	 * The username of message
+	 */
+	@Parameter(required = false)
+	private String username;
+	/**
 	 * The message
 	 */
 	@Parameter(required = true)
@@ -56,6 +65,7 @@ public class SlackMessageMojo extends AbstractMojo {
 		getLog().info("Starting SlackMessage to '"+apiHash+"'");
 		getLog().debug("\t with message '"+message+"'");
 		SlackMessage msg = new SlackMessage();
+		msg.setUsername(username);
 		msg.setFallback(message);
 		msg.setPretext(message);
 		msg.setColor(color);
@@ -63,6 +73,22 @@ public class SlackMessageMojo extends AbstractMojo {
 		if(fields != null && !fields.isEmpty()){
 			msg.setFields(fields);
 		}
+		
+		try {
+	       
+	        ObjectMapper mapper = new ObjectMapper();
+	        String msgString = mapper.writeValueAsString(msg);
+
+	        getLog().info("Message Payload: \n" + msgString);
+	        
+	    } catch (JsonGenerationException e) {
+	       e.printStackTrace();
+	    } catch (JsonMappingException e) {
+	       e.printStackTrace();
+	    } catch (IOException e) {
+	       e.printStackTrace();
+	    }
+		
 		String ret = SlackApiFactory.getClient().sendMessage(apiHash, msg);
 		getLog().debug("Return: "+ret);
 		if(!ret.trim().equalsIgnoreCase("ok")){
