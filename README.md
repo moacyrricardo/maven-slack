@@ -27,7 +27,7 @@ Then add the plugin repository
    </releases>  
    <snapshots>  
      <enabled>false</enabled>  
-   </snapshots> 
+   </snapshots>
 </pluginRepository>
 <pluginRepository>
   <id>s3-moarepo-snapshot</id>
@@ -37,7 +37,7 @@ Then add the plugin repository
    </releases>  
    <snapshots>  
      <enabled>true</enabled>  
-   </snapshots> 
+   </snapshots>
 </pluginRepository>
 ```
 Adding dependency
@@ -45,7 +45,7 @@ Adding dependency
 ```xml
 <groupId>br.com.kibutx</groupId>
 <artifactId>slack-maven-plugin</artifactId>
-<version>1.0.0-SNAPSHOT</version>
+<version>1.1.0-SNAPSHOT</version>
 ```
 Usage
 ======
@@ -66,6 +66,7 @@ channel: maybe a direct contact or a channel override (since webhooks are bound 
       <configuration>
         <apiHash>hash1/hash2/hash3</apiHash>
         <username>Maven</username>
+        <!-- a channel or a @devmate -->
         <channel>@devmate</channel>
         <message>Short message</message>
         <fields>
@@ -73,6 +74,7 @@ channel: maybe a direct contact or a channel override (since webhooks are bound 
             <value>Field 1 value</value>
           </field>
         </fields>
+        <!-- OPTIONAL -->
         <attachments>
           <attachment>
             <fallback>Required plain-text summary of the attachment.</fallback>
