@@ -55,7 +55,7 @@ channel: maybe a direct contact or a channel override (since webhooks are bound 
 <plugin>
   <groupId>br.com.kibutx</groupId>
   <artifactId>slack-maven-plugin</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.1.0-SNAPSHOT</version>
   <executions>
     <execution>
       <id>MSG inicio deploy</id>
